@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+	<title>webapp-导航固定与手势控制</title>
+	<meta charset='utf-8' />
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+
+<body>
+	
+	<style>
+		*{margin: 0;padding: 0;-webkit-text-size-adjust: none;}
+
+		#nav{
+			height: 30px;
+			background-color: #333;
+			color:white;
+			width: 100%;
+			-webkit-transition:all 100ms ease;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 2;
+		}
+		
+		#main{
+			position: relative;
+		}
+		#main.show{
+			margin-top: 30px;
+		}
+		#main.hide{
+			margin-top: 0px;
+		}
+	</style>
+	
+	<div id="nav">123</div>
+	
+	<div id="main" class="show">
+		<div id="con1">
+			<div id="con_in">123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/>123<br/></div>
+
+		</div>
+	</div>
+<script src="iscroll.js"></script>
+<script>
+
+	
+	document.addEventListener("DOMContentLoaded",loaded,false);
+
+	function loaded () {
+		window.scrollTo(0,0);
+		resize();
+		initIScroll();
+	}
+
+	//resize main and body
+	window.addEventListener("resize",resize,false);
+
+	var main = document.getElementById('main');
+	var nav = document.getElementById('nav');
+
+	function resize(){
+		window.scrollTo(0,0);
+
+		document.body.style.height = window.innerHeight+ "px";
+
+		main.style.height = window.innerHeight - nav.offsetHeight + "px";
+		main.style.overflow = "hidden";
+	}
+	//init iscroll
+	function initIScroll () {
+		main.style.position = "relative";
+		window.mIS = new iScroll("main",{
+			onScrollStart : function () {
+				this._mis_captured = false;
+				this.options.onScrollMove = mIS_onScrollMove;
+			},
+			onTouchEnd : function () {
+				this.options.onScrollMove = null;
+			}
+		});
+	}
+
+	//处理手势
+	function mIS_onScrollMove (e) {
+		if (this._mis_captured) {
+			return;
+		};
+		this._mis_captured = true;
+		if (this.dirY>0) {
+			hideNav();
+		}else{
+			showNav();
+		}
+	}
+
+	//show nav
+	function showNav () {
+		if (main.className == "show") {
+			return;
+		};
+		main.className = "show";
+		main.style.height = main.offsetHeight - 30 + "px";
+		mIS._pos(0,mIS.y-30);
+		mIS.refresh();
+		nav.style.webkitTransform = "translate(0,0px) translateZ(0)";
+	}
+
+	//hide nav
+	function hideNav () {
+		if (main.className == "hide") {
+			return;
+		};
+		main.className = "hide";
+		main.style.height = main.offsetHeight + 30 + "px";
+		mIS._pos(0,mIS.y+30);
+		mIS.refresh();
+		nav.style.webkitTransform = "translate(0,-30px) translateZ(0)";
+	}
+</script>
+
+</body>
+</html>	
