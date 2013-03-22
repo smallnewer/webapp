@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>swipeview</title>
+	<meta charset="UTF-8" >
+	<meta name='viewport' content='width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no'>
+	<link rel="stylesheet" href="../../lib/base.css">
+	<link rel="stylesheet" href="../../component/swipeview/css/swipeview.css">
+	<style>
+		.main{
+			overflow: hidden;
+			position: relative;
+			
+		}
+		.swipeview{
+			height: 300px;
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div>
+			<div>
+				<div class="swipeview">
+					<div class="swipeview-sbox">
+						<div>1
+							<img src="images/1.jpg" alt="">
+						</div>
+						<div>2
+							<img src="images/1.jpg" alt="">
+						</div>
+						<div>3
+							<img src="images/1.jpg" alt="">
+						</div>
+						<div>4
+							<img src="images/1.jpg" alt="">
+						</div>
+						<div>5
+							<img src="images/1.jpg" alt="">
+						</div>
+					</div>
+					<div class="swipeview-nbox">
+						<div class="active"></div>
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	
+
+<script src="../../lib/lib.js"></script>
+<script src="../../component/swipeview/js/swipeview.js"></script>
+<script>
+	var wrap = $('.swipeview');
+	//fix width
+	wrap.swipeview()
+
+</script>
+</body>
+</html>

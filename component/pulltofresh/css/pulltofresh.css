@@ -1,0 +1,7 @@
+.main{
+	overflow: hidden;
+	position: relative;
+}
+.pulldown{
+	display: none;
+}
