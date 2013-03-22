@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Webapp : " />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Webapp</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/smallnewer/webapp">View on GitHub</a>
+
+          <h1 id="project_title">Webapp</h1>
+          <h2 id="project_tagline"></h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/smallnewer/webapp/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/smallnewer/webapp/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>在ios6 webapp开发中的一些积累。包括bug记录，最优布局，js工具库，iPhone UI组件。</p>
+
+<h3>JS工具库 lib</h3>
+
+<p>目前JS工具库刚刚起步，还在不断完善中，开始以ios6为主，后期兼容Android 4+。语法类jQuery，上手快速。</p>
+
+<h4>API：</h4>
+
+<ol>
+<li>$(selector) ==&gt; 选择器<br>
+参数：selector =&gt; 可以为 css3-选择器:string、原生dom节点:node、原始dom节点列表:nodeList.<br>
+返回：$实例对象<br>
+#####静态方法</li>
+<li>$.extend(target, clone, deep) ==&gt; 为$扩展静态方法和属性<br>
+    参数：<br>
+    target =&gt; Object.可选。要被复制到的对象。默认为$。<br>
+    clone =&gt; Object.必填。要被复制的对象。<br>
+    deep =&gt; Boolean.可选。是否深度复制，默认为false。<br>
+</li>
+<li>$.isArr(data) ==&gt; 判断是否是数组。<br>
+参数：data =&gt; 被检测的数据。<br>
+返回：Boolean。<br>
+</li>
+<li>$.isFn(data) ==&gt; 判断是否是函数。<br>
+参数：data =&gt; 被检测的数据。<br>
+返回：Boolean。<br>
+</li>
+<li>$.each(arr, stepFn) ==&gt; 类似原生数组的forEach方法，遍历一个数组或$实例对象<br>
+参数：<br>
+    arr =&gt; Array || $实例。必填。要被遍历的对象。<br>
+    stepFn =&gt; Function。必填。数组中的每一项都会被传入到stepFn中执行一次。<br>
+          stepFn包含三个参数，依次为：index,item,arr;<br>
+</li>
+</ol><h5>原型方法</h5>
+
+<p>原型方法是由$实例直接调用，譬如：<br><code>$("body").each();</code>         </p>
+
+<ol>
+<li>each(arr, stepFn) ==&gt; 类似原生数组的forEach方法，遍历一个数组或$实例对象<br>
+参数：<br>
+    arr =&gt; Array || $实例。可选。要被遍历的对象。默认为$实例中的所有标签。<br>
+    stepFn =&gt; Function。必填。数组中的每一项都会被传入到stepFn中执行一次。<br>
+          stepFn包含三个参数，依次为：index,item,arr;<br>
+</li>
+</ol><h3>UI组件</h3>
+
+<p>以lib工具库为基础架构，由于pad的页面展示更加靠近pc，因此以手机为主。前期主iPhone，后期兼容Android手机。<br>
+目前组件包括：<br>
+1. iscroll ==&gt; 基于开源框架iScroll。API一样，用法见demo。<br>
+2. pulltofresh ==&gt; 同样基于iScroll。API说明待补充。。。<br>
+3. swipeview ==&gt; 基于开源框架swipeview。API一样，用法见demo。更适用于大量图片的滑动展示，不适合做大图滚动组件。        </p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Webapp maintained by <a href="https://github.com/smallnewer">smallnewer</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
