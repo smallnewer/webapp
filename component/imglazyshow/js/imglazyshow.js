@@ -91,10 +91,16 @@
 			},false)
 		}else{
 			var _this = this;
+			var _tt;
 			iscrollObj.options.onScrollEnd=function () {
-				//update($imglist,this.wrap,this.offset);
-				_this.refresh();
+				clearTimeout(_tt);
+				_tt = setTimeout(function(){
+					_this.refresh();
+				},0);
 			};
+			iscrollObj.options.onScrollStart = function (e){
+				clearTimeout(_tt);
+			}
 			iscrollObj.options.onRefresh=function () {
 				// update($imglist,this.wrap,this.offset);
 				_this.refresh(true);
