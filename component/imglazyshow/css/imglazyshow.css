@@ -1,0 +1,4 @@
+.img-lazyshow>img{
+	/*clear img bottom space*/
+	vertical-align: middle;
+}
