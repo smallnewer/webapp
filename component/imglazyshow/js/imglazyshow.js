@@ -72,27 +72,44 @@
 		}
 		wrap.style.display = "none";
 	}
-	//$imglist ,$选中的图片集合，wrap是可视区域的容器，默认为窗口,offset容错偏差
+	//$imglist内部的符合标准的图片均被懒显示，wrap是可视区域的容器，默认为窗口,offset容错偏差
 	function imgLazyShow ($imglist,wrap,offset,iscrollObj) {
-		if ($imglist._hasImgLazyShow) {return};
-		wrap = wrap ? wrap : window;
-		offset = offset ? offset : 0;
-		$imglist._hasImgLazyShow = true;
-		update($imglist,wrap,offset);
+		this.wrap = wrap ? (wrap.length) ? wrap[0] : wrap : window;
+		this.$imglist = $imglist;
+		this.iscrollObj = iscrollObj;
+		if (!this._imglist) {
+			this._imglist = $imglist.find(".img-lazyshow > img");
+		};
+		if (this._imglist._hasImgLazyShow) {return};
+		
+		this.offset = offset ? offset : 0;
+		this._imglist._hasImgLazyShow = true;
+		update(this._imglist,this.wrap,this.offset);
 		if (!iscrollObj) {
 			wrap.addEventListener("scroll",function (e) {
-				update($imglist,wrap,offset);
+				update($imglist,this.wrap,this.offset);
 			},false)
 		}else{
+			var _this = this;
 			iscrollObj.options.onScrollEnd=function () {
-				update($imglist,wrap,offset);
+				//update($imglist,this.wrap,this.offset);
+				_this.refresh();
+			};
+			iscrollObj.options.onRefresh=function () {
+				// update($imglist,this.wrap,this.offset);
+				_this.refresh(true);
 			};
 		}
 		
 	}
+	imgLazyShow.prototype.refresh = function(preventIScroll) {
+		this._imglist = this.$imglist.find(".img-lazyshow > img");
+		update(this._imglist,this.wrap,this.offset);
+		!preventIScroll && this.iscrollObj && this.iscrollObj.refresh();
+	};
 	$.fn.extend({
 		imgLazyShow : function (wrap,offset,iscrollObj) {
-			return this.length>0 ? new imgLazyShow(this,wrap,offset,iscrollObj) : null; 
+			return this.length>0 ? new imgLazyShow(this,null,offset,iscrollObj) : null; 
 		}
 	})
 })();

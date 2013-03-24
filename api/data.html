@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试</title>
+	<script src="lib/lib.js"></script>
+</head>
+<body>
+	<div data-a="dataa" data-a-b="dataab"></div>
+	<script>
+		// get from data attribute
+		var t = $("div").data("a");//dataa
+		var t = $("div").data("ab");//null
+		var t = $("div").data("aB");//datab
+
+		//set data
+		$("div").data("name","123");
+		var t = $("div").data("name");//123
+		$("div").data("a","321");
+		var t = $("div").data("a");//321
+		
+		alert(t)
+	</script>
+</body>
+</html>
