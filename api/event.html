@@ -88,6 +88,11 @@
 		$("body").bind("keydown",function () {
 			alert('按键了');
 		})
+
+		//测试this
+		$("body").bind("click",function () {
+			alert(this == document.body)
+		})
 	</script>
 </body>
 </html>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试</title>
+	<script src="../lib/lib.js"></script>
+	<script src="../lib/css3prefix.js"></script>
+</head>
+<body>
+	<style>
+		div{
+			-moz-box-shadow: 3px 3px 4px #bdbcbc;
+			-webkit-box-shadow: 3px 3px 4px #bdbcbc;
+			-ms-box-shadow: 3px 3px 4px #bdbcbc;
+			-o-box-shadow: 3px 3px 4px #bdbcbc;
+			box-shadow: 3px 3px 4px #bdbcbc;
+			-moz-transform: translate(10px, 10px);
+			-o-transform: translate(10px, 10px);
+			-webkit-transform: translate(10px, 10px);
+			transform: translate(10px, 10px);
+		}
+	</style> 
+	<div>123123</div>
+	<script>
+		var w = $("div").css("box-shadow");
+
+		console.log(w , $.supportStyle["box-shadow"]);
+
+		w = $("div").css("transform");
+		console.log(w , $.supportStyle["transform"]);
+
+		$("div").css("box-shadow","3px 3px 4px red")
+				.css("transform","translate(100px,100px)")
+	</script>
+</body>
+</html>
