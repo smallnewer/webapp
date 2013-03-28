@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试</title>
+	<script src="../lib/lib.js"></script>
+	<script src="../lib/event.js"></script>
+	<script src="../lib/promise.js"></script>
+	<script src="../lib/css3prefix.js"></script>
+	<script src="../lib/transition.js"></script>
+</head>
+<body>
+	<style>
+		div{
+			-moz-box-shadow: 3px 3px 4px #bdbcbc;
+			-webkit-box-shadow: 3px 3px 4px #bdbcbc;
+			-ms-box-shadow: 3px 3px 4px #bdbcbc;
+			-o-box-shadow: 3px 3px 4px #bdbcbc;
+			box-shadow: 3px 3px 4px #bdbcbc;
+			-webkit-transform: translate(10px, 10px) translateZ(0);
+			border: 1px solid red;
+			width:100%;
+		}
+	</style> 
+	<div>123123</div>
+	<div>123123</div>
+	<script>
+	var s = $("div").transition("margin-left","100px",1000).done(function () {
+setTimeout(function () {
+	s.stop();
+},400)
+		$("div").transition("width","600px",500).done(function () {
+			$("div").transition("height","100px",500)
+		}).done(function () {
+			$("div").transition("transform","translate(50px,-50px)").done(function () {
+				$("div").transition("transform","translate(100px,100px)")
+			})
+		})
+	})
+// 		$("div").transition("margin-left","100px",1000)
+// 				.transition({"width":"100px"},2000,function(e){
+// 					console.log("呜呜，这里不会被触发",+e.propertyName)
+// 				})
+		
+		
+// setTimeout(function () {
+// 	//如果有覆盖，浏览器只会触发最后一次的end事件
+// 		$("div").transition("width","300px",3000,function (e) {
+// 			console.log("哈哈哈，出发啦")
+// 			window.b = e;
+// 			$(this).transition("height","100px",function (e) {
+// 				$(this).transition("transform","translate(100px,100px)")
+// 			})
+
+// 		})
+// },300)
+		
+		// $("div").transition("width","700px",1000)
+		//同一标签的同一属性，会以一个事件对象进行传播执行函数。会导致bind中德data参数失效。
+	</script>
+</body>
+</html>

@@ -89,10 +89,14 @@
 			alert('按键了');
 		})
 
-		//测试this
-		$("body").bind("click",function () {
-			alert(this == document.body)
-		})
+		function repeat () {
+			alert("repeat")
+		}
+		//重复绑定测试
+		$("div").bind("click",repeat);
+		$("div").bind("click",repeat);
+		$("div").bind("click",repeat);
+		$("div").bind("click",repeat);
 	</script>
 </body>
 </html>

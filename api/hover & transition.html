@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试</title>
+	<script src="../lib/lib.js"></script>
+	<script src="../lib/event.js"></script>
+	<script src="../lib/promise.js"></script>
+	<script src="../lib/css3prefix.js"></script>
+	<script src="../lib/transition.js"></script>
+</head>
+<body>
+	<style>
+
+		.btn{
+			width: 200px;
+			height: 30px;
+			background: white;
+		}
+		.con{
+			width: 0px;
+			height: 0px;
+			border: 1px solid red;
+			overflow: hidden;
+			-webkit-transform:translate(0,0) rotate(0deg);
+		}
+	</style> 
+	<div class="btn">放上来</div>
+	<div class="con">内容区域</div>
+	<script>
+		$(".btn").bind("mouseover",function () {
+			$(this).transition("background-color","red").done(function () {
+				$(".btn").transition("width","400px",{
+					ease : "cubic-bezier(.69,1.69,.55,1.11)",
+					time : 1000
+				})
+			});
+			$(".con").transition({
+				"transform" : "translate(200px,-30px) rotate(360deg)",
+				"width" : "500px",
+				"height" : "100px"
+			})
+		},1000)
+		$(".btn").bind("mouseout",function () {
+			$(this).transition("width","200px").done(function () {
+				$(".btn").transition("background-color","yellow")
+			})
+			$(".con").transition({
+				"transform" : "translate(0,-0) rotate(0deg)",
+				"width" : "00px",
+				"height" : "0px"
+			})
+		},1000)
+	</script>
+</body>
+</html>

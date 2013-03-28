@@ -3,8 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>测试</title>
-	<script src="../lib/lib.js"></script>
-	<script src="../lib/css3prefix.js"></script>
+	<script src="zepto.js"></script>
 </head>
 <body>
 	<style>
@@ -18,19 +17,29 @@
 			-o-transform: translate(10px, 10px);
 			-webkit-transform: translate(10px, 10px);
 			transform: translate(10px, 10px);
+			border: 1px solid red;
+			width:1000px;
 		}
 	</style> 
 	<div>123123</div>
+	<!-- <div>123123</div> -->
 	<script>
-		var w = $("div").css("box-shadow");
+		$("div").anim({
+			"width":"300px"
+		},1,"ease",function(){
+			alert(0)
+		}).anim({
+			"height":"300px"
+		},1,"ease",function(){
+			alert(1)
+		}).anim({
+			"width":"700px"
+		},1,"ease",function(){
+			alert(2)
+		})
+
 		
-		console.log(w , $.supportStyle["box-shadow"]);
-
-		w = $("div").css("transform");
-		console.log(w , $.supportStyle["transform"]);
-
-		$("div").css("box-shadow","3px 3px 4px red")
-				.css("transform","translate(100px,100px)")
+		
 	</script>
 </body>
 </html>
