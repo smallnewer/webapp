@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试</title>
+	<script src="zepto.js"></script>
+</head>
+<body>
+	<style>
+		div{
+			-moz-box-shadow: 3px 3px 4px #bdbcbc;
+			-webkit-box-shadow: 3px 3px 4px #bdbcbc;
+			-ms-box-shadow: 3px 3px 4px #bdbcbc;
+			-o-box-shadow: 3px 3px 4px #bdbcbc;
+			box-shadow: 3px 3px 4px #bdbcbc;
+			-moz-transform: translate(10px, 10px);
+			-o-transform: translate(10px, 10px);
+			-webkit-transform: translate(10px, 10px);
+			transform: translate(10px, 10px);
+			border: 1px solid red;
+			width:1000px;
+		}
+	</style> 
+	<div>123123</div>
+	<div>123123</div>
+	<script>
+		var a = $("div").get(0)
+		/* 
+		 * 利用transition做动画函数，如果使用all设置对API的实现会方便很多
+		 * 但是很不幸，有bug，详见下：
+		 */
+		// a.style.webkitTransition = "all 2s linear";
+		// a.clientLeft //bug,使浏览器reflow，保证transition正确开始
+		// a.style.width = "100px";
+		// a.style.height = "300px"
+
+		// a.style.webkitTransition = "all 4s linear";
+		// a.style.width = "300px"
+
+		//上述代码中，开发者使用api设置宽和高以2s进行动画。随后在动画中可能会再次修改宽度，
+		//使其以4s进行动画。
+		//照期望，width应该是4秒走300，高度不受影响按2s走。但实际上高度也会变成4秒走完。
+		//因此需要采用属性拆开写的效果，如下：
+
+		a.style.webkitTransition = "width 2s linear,height 2s linear";
+		a.clientLeft
+		a.style.width = "100px";
+		a.style.height = "300px"
+
+		a.clientLeft
+		a.style.webkitTransition = "width 4s linear,height 0s linear";//此处见下描述
+		a.style.width = "300px"
+		//在上面备注部分，高度的属性必须写，哪怕时间改变都无所谓，只要写了高度就可以。
+		//这样，浏览器会保持原有的高度变化（2s完成），同时把宽度以4s进行变化。
+
+		//每次clientLeft等reflow之后，再设置transition，可以视为一次新的transition定义，
+		//之前的动画会继续进行。
+		//当有属性改变以后，会从现在的值上，以新时间开始该属性的动画。
+		//如果想要重新设置某个css的值，并且以新速度执行，就需要重新reflow下，定义下新的
+		//transition。然后改变css的值。
+
+		//当以动画进行后，可能还会有修改样式的要求。这时候如果保持动画时间，会使修改的样式
+		//以动画进行，这是不正确的。根据上面的介绍的特性，可以在修改完样式以后，再把transition的
+		//所有css动画时间都设置成0s即可。
+
+		//在每次设置transition之前要reflow一下。
+	</script>
+</body>
+</html>

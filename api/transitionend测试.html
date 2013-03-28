@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试</title>
+	<script src="zepto.js"></script>
+</head>
+<body>
+	<style>
+		div{
+			-moz-box-shadow: 3px 3px 4px #bdbcbc;
+			-webkit-box-shadow: 3px 3px 4px #bdbcbc;
+			-ms-box-shadow: 3px 3px 4px #bdbcbc;
+			-o-box-shadow: 3px 3px 4px #bdbcbc;
+			box-shadow: 3px 3px 4px #bdbcbc;
+			-moz-transform: translate(10px, 10px);
+			-o-transform: translate(10px, 10px);
+			-webkit-transform: translate(10px, 10px);
+			transform: translate(10px, 10px);
+			border: 1px solid red;
+			width:1000px;
+		}
+	</style> 
+	<div>123123</div>
+	<div>123123</div>
+	<script>
+		var a = $("div").get(0)
+		a.clientLeft;
+		a.style.webkitTransition = "width 2s ease,height 4s ease,-webkit-transform 2s ease";
+		//a.style.width = "600px";
+		setTimeout(function () {
+			a.style.width = "100px";
+			a.style.height = "100px"
+			a.style.webkitTransform = "translate(100px,100px)"
+			a.addEventListener("webkitTransitionEnd",function (e) {
+				console.log(e,Date.now(),222)
+			});
+		},500)
+
+		a.addEventListener("webkitTransitionEnd",function (e) {
+			console.log(e,Date.now(),1111)
+		});
+
+		/*var s = {
+			eleid  : {"width":[fn1,fn2,fn3,fn4]}
+			eleid2 : ....
+			eleid3 : ...
+		}
+		
+		addFn(cssKey,fn);//if repeat nothing happen
+		var handle = function(e){
+			//if ok
+			//find from s by e.target
+			//for =>fire e.propertyName
+			//
+		}
+		
+		$eles.bind("width-transition-end",function(){});
+		var handle = function(e){
+			//if ok .e.target == e.currentTarget. e.proper
+			$(e.target).tigger(e.propertyName+"-transition-end");//这样保证marginleft没绑定回掉就不会触发
+			$(e.target).unbind(event);
+		}
+
+		*/
+	</script>
+</body>
+</html>
