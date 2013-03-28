@@ -1,3 +1,73 @@
+#iTools
+
+iTools是一款类似jQuery的类库，它模仿成熟好用的jQuery API，在移动端期望提供比jQuery
+甚至zepto更佳的开发体验。
+它基于现代浏览器特性（HTML5、CSS3、ECMAScript5），不会比jQuery更强大，但会比它更轻量，
+在现在浏览器中表现会更加依赖原生支持而非JS模拟。
+
+以上只是愿景，目前iTools还是试验品~期待完善。
+
+更新文档：
+
+2013/3/28：
+
+* 增加transition方法
+* 增加队列方法queue
+* 增加unbind()无传参的使用模式
+* 修复核心库中lib的一些bug
+* 修复unbind无法真正清除handle的bug
+
+2013/3/25：
+
+* 增加css3prefix，实现对常用css3的设置和获取。区别较大的如flexbox、渐变等尚未兼容。
+* 增加event，包括：bind、unbind、$.Event
+* 增加$.proxy
+
+2013/3/24：
+
+* 增加data方法
+* $现在支持nodeList类型的传入
+
+
+## API
+
+##### $
+`$(cssselector) => self`
+
+`$(node) => self`
+
+`$(nodeList) => self`
+
+`$(new$) ==> new$`
+
+类似jQuery，目前只支持输入选择器、原生dom节点、原始节点列表、$实例出来的对象。最经典的例子：
+
+`$('div').css('width',"200px");`
+
+##### $.extend()
+
+`$.extend(clone) => $`
+
+`$.extend(clone,deep) => $`
+
+`$.extend(target,clone,deep) => target`
+
+$.extend提能实现对一个对象的复制，将clone参数的属性和方法复制到$或target参数上
+
+deep参数可以指定是否深度复制。
+
+##### $.isArr()
+
+``
+
+
+
+
+
+
+
+
+
 在ios6 webapp开发中的一些积累。包括bug记录，最优布局，js工具库，iPhone UI组件。
 
 ### JS工具库 lib
