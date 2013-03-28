@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试</title>
+	<script src="../lib/lib.js"></script>
+	<script src="../lib/queue.js"></script>
+</head>
+<body>
+	<style>
+		div{
+			-moz-box-shadow: 3px 3px 4px #bdbcbc;
+			-webkit-box-shadow: 3px 3px 4px #bdbcbc;
+			-ms-box-shadow: 3px 3px 4px #bdbcbc;
+			-o-box-shadow: 3px 3px 4px #bdbcbc;
+			box-shadow: 3px 3px 4px #bdbcbc;
+			-webkit-transform: translate(10px, 10px) translateZ(0);
+			border: 1px solid red;
+			width:100%;
+		}
+	</style> 
+	<div>123123</div>
+	<div class="a">123123</div>
+	<script>
+
+		$("div").queue("fx",function () {
+			console.log(123)
+		})
+	</script>
+</body>
+</html>

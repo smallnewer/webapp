@@ -7,6 +7,7 @@
 	<script src="../lib/event.js"></script>
 	<script src="../lib/promise.js"></script>
 	<script src="../lib/css3prefix.js"></script>
+	<script src="../lib/queue.js"></script>
 	<script src="../lib/transition.js"></script>
 </head>
 <body>
@@ -22,21 +23,29 @@
 			width:100%;
 		}
 	</style> 
-	<div>123123</div>
-	<div>123123</div>
+	<div class="a">123123</div>
+	<div class="b">123123</div>
 	<script>
-	var s = $("div").transition("margin-left","100px",1000).done(function () {
+	var s = $("div").transition("margin-left","100px",1000)
+					.transition("margin-left","300px",1000);
+	$(".b").stop().transition("margin-left","50px",1000)
+			.transition("margin-left","10px",1000)
+			.transition("margin-left","500px",1000,function(){})
 setTimeout(function () {
-	s.stop();
-},400)
-		$("div").transition("width","600px",500).done(function () {
-			$("div").transition("height","100px",500)
-		}).done(function () {
-			$("div").transition("transform","translate(50px,-50px)").done(function () {
-				$("div").transition("transform","translate(100px,100px)")
-			})
-		})
-	})
+	$(".b").stop()
+},1500)
+	//.done(function () {
+// setTimeout(function () {
+// 	s.stop();
+// },400)
+// 		$("div").transition("width","600px",500).done(function () {
+// 			$("div").transition("height","100px",500)
+// 		}).done(function () {
+// 			$("div").transition("transform","translate(50px,-50px)").done(function () {
+// 				$("div").transition("transform","translate(100px,100px)")
+// 			})
+// 		})
+// 	})
 // 		$("div").transition("margin-left","100px",1000)
 // 				.transition({"width":"100px"},2000,function(e){
 // 					console.log("呜呜，这里不会被触发",+e.propertyName)
