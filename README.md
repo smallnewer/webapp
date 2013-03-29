@@ -44,6 +44,11 @@ iTools是一款类似jQuery的类库，它模仿成熟好用的jQuery API，在�
 
 `$('div').css('width',"200px");`
 
+想要获取原生DOM节点，也和jQuery中一样目前只能使用下标获取：
+
+    var div = $('div')[0];//获取第一个div的DOM对象
+    div.style.width = "200px";
+
 ##### $.extend()
 
 `$.extend(clone) => $`
@@ -58,7 +63,141 @@ deep参数可以指定是否深度复制。
 
 ##### $.isArr()
 
-``
+`$.isArr(data) ==> Boolean`
+
+判断指定参数是否为数组
+
+##### $.isFn()
+
+`$.isFn(data) ==> Boolean`
+
+判断指定参数是否Function
+
+##### $.isObj()
+
+`$.isObj(data) ==> Boolean`
+
+判断指定参数是否为Object
+
+##### $.isUndefined()
+
+`$.isUndefined(data) ==> Boolean`
+
+判断指定参数是否为Undefined
+
+##### $.isBoolean()
+
+`$.isBoolean(data) ==> Boolean`
+
+判断指定参数是否为Boolean
+
+
+##### $.each()
+
+`$.each(array, stepFn) ==> $`
+
+类似数组原生方法forEach，遍历array，遍历每一项都回执行一次stepFn，传入参数
+（index, item, array）。
+
+     var arr = ["a", "b", "c"];
+     $.each(arr, function(ind, item){
+        console.log(ind, item);
+     });
+     
+     //输出如下：
+     1.  0 "a"
+     2.  1 "b"
+     3.  2 "c"
+
+##### addClass()
+
+`$("div").addClass("cls1") ==> self`
+
+为选中的每一个标签添加指定的class名
+
+##### removeClass()
+
+`$("div").removeClass("cls1") ==> self`
+
+为选中的每一个标签删除指定的class名
+
+##### hasClass()
+
+`$("div").hasClass("cls1") ==> Boolean`
+
+获取第一个标签是否拥有指定的class名
+
+##### css()
+
+`$("div").css("width") ==> self`
+
+`$("div").css("width","200px") ==> self`
+
+`$("div").css({key:value}) ==> self`
+
+获取或设置选中标签的指定css属性值。
+
+    var w = $("div").css("width");//"100px"  获取第一个标签的宽度值
+    
+    //要设置所有选中标签的css：
+    $("div").css("width","200px");
+    //要设置多个css：
+    $("div").css("width","200px").css("width","200px");
+    //也可以换行写：
+    $("div").css("width","200px")
+            .css("width","200px");
+    //也可以这么写：
+    $("div").css({
+        "width" : "100px",
+        "height": "50px"
+    });
+    
+##### eq()
+
+`$('div').eq(ind) ==> 新的$实例`
+
+获取回选中标签中，指定下标的标签。返回的是$包裹的一个新的实例对象。
+
+    $('div').eq(0).css("width","100px");
+    //将第一个div的宽度设置成100px
+
+##### attr()
+
+`$('div').attr(key) ==> value`
+
+`$('div').attr(key, value) ==> self`
+
+设置或获取选中标签的属性。该属性获取的是HTML标签上书写的节点，而非JS中定义的对象属性。
+
+    <div id="test1"></div>
+    <div id="test2"></div>
+    
+    //获取第一个div的id
+    $('div').attr("id"); // "test1"
+    
+    //设置所有div的data-src节点为###
+    $('div').attr("data-src", "###");
+    //<div id="test1" data-src="###"></div>
+    //<div id="test2" data-src="###"></div>
+    
+##### data()
+
+`$('div').data(name) ==> value`
+
+`$('div').data(name, value) ==> self`
+
+设置或获取选中标签的自定义数据。该方法可以为标签绑定任何数据，也可以查找标签上以data-
+开头的自定义节点。
+
+    <div id="test1" data-url="url"></div>
+    //为所有标签绑定name为"src"的数据
+    $('div').data("src", "###); // 和attr不同，标签上的src并不会被改变。
+    
+    //获取第一个标签上的"src"属性
+    var src = $('div').data("src"); //"###"
+    
+    //当没有为标签绑定name的数据，则会尝试返回标签上data-name对应的值
+    var url = $('div').data("url"); //"url"
 
 
 
