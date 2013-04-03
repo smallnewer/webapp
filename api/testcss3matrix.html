@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试</title>
+</head>
+<body>
+	<style>
+		div{
+			-moz-transform: translate(10px, 10px);
+			-o-transform: translate(10px, 10px);
+			-webkit-transform: translate(10px, 10px);
+			transform: translate(10px, 10px);
+			border: 1px solid red;
+			width:1000px;
+			-webkit-transition:width 3s ease;
+		}
+	</style> 
+	<div>123123</div>
+	<!-- <div>123123</div> -->
+	<script>
+		var div=document.getElementsByTagName('DIV')[0];
+		div.clientLeft;
+		div.style.width = "100px";
+		div.clientLeft;
+		setTimeout(function () {
+			div.style.removeProperty("width")
+		},100)
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试</title>
+	<script src="../lib/lib.js"></script>
+	<script src="../lib/event.js"></script>
+	<script src="../lib/promise.js"></script>
+	<script src="../lib/css3prefix.js"></script>
+	<script src="../lib/transition.js"></script>
+</head>
+<body>
+	<style>
+
+
+	</style> 
+	<div class="btn">放上来</div>
+	<div class="con">内容区域</div>
+	<script>
+		$(".btn").toggle(function () {
+			alert("a"+this.className)
+		},function () {
+			alert("a"+2)
+		},function () {
+			alert("a"+3)
+		})
+		$("div").toggle(function () {
+			alert("b"+this.className)
+		},function () {
+			alert("b"+2)
+		},function () {
+			alert("b"+3)
+		})
+	</script>
+</body>
+</html>

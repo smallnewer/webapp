@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试</title>
+	<script src="../lib/lib.js"></script>
+	<script src="../lib/event.js"></script>
+	<script src="../lib/promise.js"></script>
+	<script src="../lib/css3prefix.js"></script>
+	<script src="../lib/queue.js"></script>
+	<script src="../lib/transition.js"></script>
+</head>
+<body>
+	<style>
+	div{border: 1px solid red;width:1000px;}
+
+	</style> 
+	<div class="btn">放上来</div>
+	<div>1</div>
+	<div>2</div>
+	<div>3</div>
+	<div>4</div>
+	<div>5</div>
+	<script>
+		$(".btn").toggle(function () {
+			$("div").each(function (i,item) {
+				$(item).transition({
+					"width":"100px"
+				},{
+					delay:i*1000,
+					ease:"cubic-bezier(.62,1.83,.59,.96)"
+				})
+			})
+		})
+		
+
+	</script>
+</body>
+</html>

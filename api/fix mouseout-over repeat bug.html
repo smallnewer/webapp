@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试</title>
+	<script src="../lib/lib.js"></script>
+	<script src="../lib/event.js"></script>
+</head>
+<body>
+	<style>
+		div{
+			padding: 100px;
+			padding-right: 0;
+			margin-right:400px;
+			border: 1px solid red;
+		}
+		span{
+			display: block;
+			height: 100px;
+			border: 1px solid red;
+		}
+	</style> 
+	<div>
+		<span>123</span>
+	</div>
+	<script>
+	//如果离开div进入到span，并不会出发div的out事件
+	//如果是离开div进入到div子标签以外的标签，则会触发out
+		$("div").bind("mouseout",function () {
+			alert(1)
+		})
+	//如果是单纯离开span，还在div内部，会触发span，但不会触发div的out事件
+		$("span").bind("mouseout",function () {
+			alert(2)
+		})
+
+	//下面同上
+		$("div").bind("mouseover",function () {
+			alert(3)
+		})
+
+		$("span").bind("mouseover",function () {
+			alert(4)
+		})
+		
+	</script>
+</body>
+</html>

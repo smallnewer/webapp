@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试</title>
+	
+</head>
+<body>
+	<style>
+		div{
+			padding: 100px;
+			padding-right: 0;
+			margin-right:400px;
+			border: 1px solid red;
+		}
+		span{
+			display: block;
+			height: 100px;
+			border: 1px solid red;
+		}
+	</style> 
+	<div>
+		<span>123</span>
+	</div>
+	<script>
+	function hasWrap (p, s) {
+		while (s && s != p){s = s.parentNode;}
+		return s === p;
+	}
+	var div = document.getElementsByTagName('div')[0];
+	var span = document.getElementsByTagName('span')[0]
+	div.addEventListener('mouseout',function (e) {
+		// console.log(e.target,e.currentTarget,e.relatedTarget);
+		//快速span=>body,span,div,body
+		//慢速span=>body
+		//     span>div span,div,div
+		//     div>body div,div,body
+		//快速移动有可能使事件两个目标跨过父标签
+		//如果冒泡的事件，rT不在cT内部（包含cT），则代表已经离开了cT，
+		//如果非冒泡的事件（cT==T），rT不在cT内部（包含cT），则代表已经离开了cT
+		if (!e.relatedTarget || !hasWrap(e.currentTarget,e.relatedTarget)) {
+			//!e.relatedTarget ==> 当鼠标离开浏览器，此项为null
+			// console.log("out")
+		};
+	},false)
+	div.addEventListener('mouseover',function (e) {
+		 // console.log(e.target,e.currentTarget,e.relatedTarget);
+		//快速body=>span   span,div,body
+		//慢速body=>span   
+		//      body=>div   div,div,body
+		//      div>span    span,div,div
+		//如果冒泡的事件，rT不在cT内部（也不等于cT），代表快速进入了cT
+		//如果冒泡的事件，rT在cT内部（包括cT），代表早已进入了cT，不触发
+		//如果非冒泡事件，rT在cT外部，代表鼠标进入了cT，触发
+		if (!e.relatedTarget || !hasWrap(e.currentTarget,e.relatedTarget)) {
+			console.log("in")
+		};
+	},false)
+	</script>
+</body>
+</html>
