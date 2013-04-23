@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试</title>
+	<script src="../lib/lib.js"></script>
+	<script src="../lib/event.js"></script>
+</head>
+<body>
+	<style>
+		ul{border:1px solid blue;}
+		li{border:1px solid red;}
+	</style>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>	
+	<script>
+		function click(e) {
+			console.log(e,this)
+		}
+		
+		$("ul").on("click","li",click);
+		// $("ul").on("click","li",click) // 重复绑定一个函数，不会重复执行
+
+		$("ul").off("click","li",click);
+		
+		// $("ul").off("click",click); // 不能清除，不知道jquery是否可以。
+
+
+		// 重复绑定一个函数，不会重复执行
+		// $("ul").bind("click",click);
+		// $("ul").bind("click",click);
+	</script>
+</body>
+</html>
