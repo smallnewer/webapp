@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试</title>
+	<script src="../lib/lib.js"></script>
+	<script src="../lib/event.js"></script>
+</head>
+<body>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			background: red;
+			margin: 50px;
+		}
+	</style>
+	<div>touch here</div>
+	<div>123123</div>
+	<script>
+		var laste = null;
+		var longt = null;
+		var touch = {};
+		$(document).bind("touchstart",function (e) {
+			laste = e.target;
+			
+			clearTimeout(longt);
+			var now = Date.now();
+			var delta = now - (touch.lash || now);
+
+			if (delta > 0 && delta < 250) {
+				touch.isDoubleTap = true;
+			};
+			touch.last = now;
+			longt = setTimeout(function () {
+				console.log("longtap",e.target)
+			},250)
+		},true);
+		$(document).bind("touchmove",function () {
+			clearTimeout(longt)
+		})
+		$(document).bind("touchend",function (e) {
+			clearTimeout(longt)
+			if (laste == e.target) {
+				console.log('tap', e.target)
+				laste = null;
+			};
+		},true);
+
+	</script>
+</body>
+</html>

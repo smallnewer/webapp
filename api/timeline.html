@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试</title>
+	<script src="../lib/lib.js"></script>
+	<script src="../lib/event.js"></script>
+	<script src="../lib/fx.js"></script>
+</head>
+<body>
+	<div data-a="dataa" data-a-b="dataab">123123</div>
+	<script>
+		var tl = $.timeline;
+		var s = function (e) {
+			console.log(1)
+		};
+		tl.start();
+		tl.addFrame(s)
+		setTimeout(function () {
+			tl.removeFrame(s)
+		},1000)
+		
+	</script>
+</body>
+</html>

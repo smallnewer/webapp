@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试</title>
+	
+</head>
+<body>
+	ul>li
+	<div class="a">
+		<p>123</p>
+		<p>123</p>
+		ul>li
+	</div>
+	<div class="b">123123</div>
+	<script>
+	var jQuery = function( s ) {
+		return new jQuery.fn.init( s );
+	};
+	jQuery.fn = jQuery.prototype = {
+		constructor: jQuery,
+		init: function( s ) {
+			var result = document.querySelectorAll(s);
+			for (var i = 0; i < result.length; i++) {
+				this[i] = result[i];
+			};
+			this.length = result.length;
+		},
+		length: 0,
+		splice: [].splice
+
+	};
+	jQuery.fn.init.prototype = jQuery.fn;
+
+	$=jQuery;
+	console.log($('div')) // 注意：用console打印是不行的，指的是在chrome审核工具中直接执行$("div")来打印
+	</script>
+</body>
+</html>
